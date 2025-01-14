@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/basic-info.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo-placeholder.png" alt="Panchayati Raj Logo" id="logo-img">
+            </a>
+            <div class="header-text">
+                <h1 id="panchayat-title">Loading...</h1>
+                <p class="subheading" id="panchayat-subtitle">Panchayati Raj Kharkhoda</p>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="panchayats.html">Panchayats</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="info-container">
+            <!-- Physical Resources Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-building"></i> Physical Resources</h3>
+                <div id="physical-resources">
+                    <h4>Buildings</h4>
+                    <ul id="buildings-list"></ul>
+                    <h4>Infrastructure</h4>
+                    <ul id="infrastructure-list"></ul>
+                </div>
+            </div>
+
+            <!-- Human Resources Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-users"></i> Human Resources</h3>
+                <div id="human-resources">
+                    <h4>Administrative Staff</h4>
+                    <ul id="admin-staff"></ul>
+                    <h4>Technical Staff</h4>
+                    <ul id="technical-staff"></ul>
+                    <h4>Support Staff</h4>
+                    <ul id="support-staff"></ul>
+                </div>
+            </div>
+
+            <!-- Financial Resources Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-wallet"></i> Financial Resources</h3>
+                <div id="financial-resources">
+                    <h4>Fixed Assets</h4>
+                    <ul id="fixed-assets"></ul>
+                    <h4>Recurring Resources</h4>
+                    <ul id="recurring-resources"></ul>
+                </div>
+            </div>
+
+            <!-- Resource Management Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-tasks"></i> Resource Management</h3>
+                <div id="resource-management">
+                    <h4>Maintenance Schedule</h4>
+                    <ul id="maintenance-schedule"></ul>
+                    <h4>Resource Allocation</h4>
+                    <ul id="resource-allocation"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Carousel -->
+        <div class="carousel">
+            <div id="carousel-content"></div>
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to load panchayat data
+        function loadPanchayatData() {
+            const panchayatId = getUrlParameter('id');
+            const panchayatName = decodeURIComponent(getUrlParameter('name') || '');
+            
+            if (!panchayatId) {
+                alert('Panchayat ID not specified');
+                return;
+            }
+
+            // Update page title and header
+            document.title = `${panchayatName} - Resources`;
+            document.getElementById('panchayat-title').textContent = `${panchayatName} - Resources`;
+            document.getElementById('panchayat-subtitle').textContent = `Panchayati Raj Kharkhoda`;
+
+            // Update buildings list
+            const buildings = [
+                'Panchayat Bhawan',
+                'Community Hall',
+                'Primary Health Center',
+                'Primary School Building',
+                'Anganwadi Center'
+            ];
+            document.getElementById('buildings-list').innerHTML = 
+                buildings.map(building => `<li>${building}</li>`).join('');
+
+            // Update infrastructure list
+            const infrastructure = [
+                'Roads: 25 km (Paved)',
+                'Water Supply Network: 15 km',
+                'Street Lights: 200 units',
+                'Public Parks: 3',
+                'Drainage System: 20 km'
+            ];
+            document.getElementById('infrastructure-list').innerHTML = 
+                infrastructure.map(item => `<li>${item}</li>`).join('');
+
+            // Update administrative staff
+            const adminStaff = [
+                'Panchayat Secretary: 1',
+                'Administrative Assistant: 2',
+                'Accounts Officer: 1',
+                'Data Entry Operator: 2'
+            ];
+            document.getElementById('admin-staff').innerHTML = 
+                adminStaff.map(staff => `<li>${staff}</li>`).join('');
+
+            // Update technical staff
+            const technicalStaff = [
+                'Junior Engineer: 1',
+                'Technical Assistant: 2',
+                'Computer Operator: 1',
+                'Surveyor: 1'
+            ];
+            document.getElementById('technical-staff').innerHTML = 
+                technicalStaff.map(staff => `<li>${staff}</li>`).join('');
+
+            // Update support staff
+            const supportStaff = [
+                'Maintenance Staff: 4',
+                'Security Guards: 2',
+                'Cleaning Staff: 6',
+                'Drivers: 2'
+            ];
+            document.getElementById('support-staff').innerHTML = 
+                supportStaff.map(staff => `<li>${staff}</li>`).join('');
+
+            // Update fixed assets
+            const fixedAssets = [
+                'Land: 10 acres',
+                'Buildings: 5 major structures',
+                'Vehicles: 3 (1 Tractor, 2 Utility)',
+                'Equipment: Various machinery'
+            ];
+            document.getElementById('fixed-assets').innerHTML = 
+                fixedAssets.map(asset => `<li>${asset}</li>`).join('');
+
+            // Update recurring resources
+            const recurringResources = [
+                'Annual Budget Allocation',
+                'Tax Revenue',
+                'Rental Income',
+                'Government Grants'
+            ];
+            document.getElementById('recurring-resources').innerHTML = 
+                recurringResources.map(resource => `<li>${resource}</li>`).join('');
+
+            // Update maintenance schedule
+            const maintenanceSchedule = [
+                'Buildings: Quarterly',
+                'Roads: Bi-annual',
+                'Water Supply: Monthly',
+                'Street Lights: Weekly'
+            ];
+            document.getElementById('maintenance-schedule').innerHTML = 
+                maintenanceSchedule.map(schedule => `<li>${schedule}</li>`).join('');
+
+            // Update resource allocation
+            const resourceAllocation = [
+                'Development Works: 40%',
+                'Maintenance: 25%',
+                'Administrative: 20%',
+                'Emergency Fund: 15%'
+            ];
+            document.getElementById('resource-allocation').innerHTML = 
+                resourceAllocation.map(allocation => `<li>${allocation}</li>`).join('');
+
+            // Load carousel images
+            const carouselContent = document.getElementById('carousel-content');
+            carouselContent.innerHTML = `
+                <div class="carousel-item active">
+                    <img src="images/panchayats/resources1.jpg" alt="${panchayatName} Resources Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/panchayats/resources2.jpg" alt="${panchayatName} Resources Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/panchayats/resources3.jpg" alt="${panchayatName} Resources Image 3">
+                </div>
+            `;
+        }
+
+        // Initialize carousel
+        function initCarousel() {
+            const carousel = document.querySelector('.carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                items.forEach(item => item.style.display = 'none');
+                items[index].style.display = 'block';
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showSlide(currentIndex);
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Auto-advance slides
+            setInterval(nextSlide, 5000);
+
+            // Show first slide
+            showSlide(currentIndex);
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPanchayatData();
+            initCarousel();
+        });
+    </script>
+</body>
+</html>

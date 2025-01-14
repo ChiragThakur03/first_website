@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plans and Projects - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/basic-info.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo-placeholder.png" alt="Panchayati Raj Logo" id="logo-img">
+            </a>
+            <div class="header-text">
+                <h1 id="panchayat-title">Loading...</h1>
+                <p class="subheading" id="panchayat-subtitle">Panchayati Raj Kharkhoda</p>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="panchayats.html">Panchayats</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="info-container">
+            <!-- Ongoing Projects Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-tools"></i> Ongoing Development Projects</h3>
+                <div id="ongoing-projects"></div>
+            </div>
+
+            <!-- Completed Projects Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-check-circle"></i> Completed Projects</h3>
+                <div id="completed-projects"></div>
+            </div>
+
+            <!-- Future Plans Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-clock"></i> Future Plans</h3>
+                <div id="future-plans"></div>
+            </div>
+
+            <!-- Government Schemes Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-university"></i> Government Schemes</h3>
+                <div id="govt-schemes">
+                    <h4>Central Government Schemes</h4>
+                    <div id="central-schemes"></div>
+                    <h4>State Government Schemes</h4>
+                    <div id="state-schemes"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Carousel -->
+        <div class="carousel">
+            <div id="carousel-content"></div>
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to load panchayat data
+        function loadPanchayatData() {
+            const panchayatId = getUrlParameter('id');
+            const panchayatName = decodeURIComponent(getUrlParameter('name') || '');
+            
+            if (!panchayatId) {
+                alert('Panchayat ID not specified');
+                return;
+            }
+
+            // Update page title and header
+            document.title = `${panchayatName} - Plans and Projects`;
+            document.getElementById('panchayat-title').textContent = `${panchayatName} - Plans and Projects`;
+            document.getElementById('panchayat-subtitle').textContent = `Panchayati Raj Kharkhoda`;
+
+            // Update ongoing projects
+            const ongoingProjects = [
+                'Road Construction - Phase 2',
+                'Water Supply Enhancement',
+                'Solar Street Lights Installation'
+            ];
+            document.getElementById('ongoing-projects').innerHTML = `
+                <ul>${ongoingProjects.map(project => `<li>${project}</li>`).join('')}</ul>
+            `;
+
+            // Update completed projects
+            const completedProjects = [
+                'Primary School Building',
+                'Community Center',
+                'Drainage System - Phase 1'
+            ];
+            document.getElementById('completed-projects').innerHTML = `
+                <ul>${completedProjects.map(project => `<li>${project}</li>`).join('')}</ul>
+            `;
+
+            // Update future plans
+            const futurePlans = [
+                'Smart Village Initiative',
+                'Digital Literacy Program',
+                'Waste Management System'
+            ];
+            document.getElementById('future-plans').innerHTML = `
+                <ul>${futurePlans.map(plan => `<li>${plan}</li>`).join('')}</ul>
+            `;
+
+            // Update government schemes
+            const centralSchemes = [
+                'MGNREGA - Employment Guarantee',
+                'PM Awas Yojana - Housing',
+                'Swachh Bharat Mission'
+            ];
+            document.getElementById('central-schemes').innerHTML = `
+                <ul>${centralSchemes.map(scheme => `<li>${scheme}</li>`).join('')}</ul>
+            `;
+
+            const stateSchemes = [
+                'Rural Development Program',
+                'Education Support Scheme',
+                'Healthcare Initiative'
+            ];
+            document.getElementById('state-schemes').innerHTML = `
+                <ul>${stateSchemes.map(scheme => `<li>${scheme}</li>`).join('')}</ul>
+            `;
+
+            // Load carousel images
+            const carouselContent = document.getElementById('carousel-content');
+            carouselContent.innerHTML = `
+                <div class="carousel-item active">
+                    <img src="images/panchayats/projects1.jpg" alt="${panchayatName} Projects Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/panchayats/projects2.jpg" alt="${panchayatName} Projects Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/panchayats/projects3.jpg" alt="${panchayatName} Projects Image 3">
+                </div>
+            `;
+        }
+
+        // Initialize carousel
+        function initCarousel() {
+            const carousel = document.querySelector('.carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                items.forEach(item => item.style.display = 'none');
+                items[index].style.display = 'block';
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showSlide(currentIndex);
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Auto-advance slides
+            setInterval(nextSlide, 5000);
+
+            // Show first slide
+            showSlide(currentIndex);
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPanchayatData();
+            initCarousel();
+        });
+    </script>
+</body>
+</html>

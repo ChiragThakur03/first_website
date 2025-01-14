@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/nav-animations.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo-placeholder.png" alt="Panchayati Raj Logo" id="logo-img">
+            </a>
+            <div class="header-text">
+                <h1>Panchayati Raj Kharkhoda</h1>
+                <p class="subheading">Panchayat Information Management System</p>
+                <p class="tagline">Strengthening Transparency, Governance, and Development</p>
+            </div>
+            <div class="time-language">
+                <div id="current-time"></div>
+                <select id="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                </select>
+            </div>
+        </div>
+        <nav class="main-nav gallery-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="panchayats.html">Panchayats</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="gallery-container">
+        <!-- Featured Carousel Section -->
+        <section class="featured-section">
+            <h2>Featured Images</h2>
+            <div class="swiper featured-carousel">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/gallery/panchayat-1.jpg" alt="Panchayat Building">
+                        <div class="slide-caption">Kharkhoda Panchayat Building</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/gallery/meeting-1.jpg" alt="Gram Sabha Meeting">
+                        <div class="slide-caption">Gram Sabha Meeting in Progress</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/gallery/development-1.jpg" alt="Development Project">
+                        <div class="slide-caption">Road Development Project</div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <!-- Photo Categories -->
+        <section class="photo-categories">
+            <h2>Photo Categories</h2>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterGallery('infrastructure')">
+                    <img src="images/gallery/infrastructure-thumb.jpg" alt="Infrastructure">
+                    <h3>Infrastructure</h3>
+                </div>
+                <div class="category-card" onclick="filterGallery('events')">
+                    <img src="images/gallery/events-thumb.jpg" alt="Events">
+                    <h3>Events</h3>
+                </div>
+                <div class="category-card" onclick="filterGallery('people')">
+                    <img src="images/gallery/people-thumb.jpg" alt="People">
+                    <h3>People</h3>
+                </div>
+                <div class="category-card" onclick="filterGallery('development')">
+                    <img src="images/gallery/development-thumb.jpg" alt="Development">
+                    <h3>Development</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Grid -->
+        <section class="photo-gallery">
+            <h2>All Photos</h2>
+            <div class="gallery-grid">
+                <!-- Infrastructure -->
+                <div class="gallery-item infrastructure">
+                    <img src="images/gallery/infra-1.jpg" alt="Infrastructure Project 1" onclick="openLightbox(this)">
+                    <div class="item-caption">New Community Center</div>
+                </div>
+                <div class="gallery-item infrastructure">
+                    <img src="images/gallery/infra-2.jpg" alt="Infrastructure Project 2" onclick="openLightbox(this)">
+                    <div class="item-caption">Water Treatment Plant</div>
+                </div>
+
+                <!-- Events -->
+                <div class="gallery-item events">
+                    <img src="images/gallery/event-1.jpg" alt="Panchayat Event 1" onclick="openLightbox(this)">
+                    <div class="item-caption">Independence Day Celebration</div>
+                </div>
+                <div class="gallery-item events">
+                    <img src="images/gallery/event-2.jpg" alt="Panchayat Event 2" onclick="openLightbox(this)">
+                    <div class="item-caption">Annual Gram Sabha</div>
+                </div>
+
+                <!-- People -->
+                <div class="gallery-item people">
+                    <img src="images/gallery/people-1.jpg" alt="Community Members 1" onclick="openLightbox(this)">
+                    <div class="item-caption">Village Council Members</div>
+                </div>
+                <div class="gallery-item people">
+                    <img src="images/gallery/people-2.jpg" alt="Community Members 2" onclick="openLightbox(this)">
+                    <div class="item-caption">Youth Committee Meeting</div>
+                </div>
+
+                <!-- Development -->
+                <div class="gallery-item development">
+                    <img src="images/gallery/dev-1.jpg" alt="Development Project 1" onclick="openLightbox(this)">
+                    <div class="item-caption">Solar Panel Installation</div>
+                </div>
+                <div class="gallery-item development">
+                    <img src="images/gallery/dev-2.jpg" alt="Development Project 2" onclick="openLightbox(this)">
+                    <div class="item-caption">School Renovation</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close-btn">&times;</span>
+            <img id="lightbox-img" src="" alt="Lightbox Image">
+            <div id="lightbox-caption"></div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

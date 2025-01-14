@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Information - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/nav-animations.css">
+    <link rel="stylesheet" href="panchayat-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo-placeholder.png" alt="Panchayati Raj Logo" id="logo-img">
+            </a>
+            <div class="header-text">
+                <h1>Panchayati Raj Kharkhoda</h1>
+                <p class="subheading">Panchayat Information Management System</p>
+                <p class="tagline">Strengthening Transparency, Governance, and Development</p>
+            </div>
+            <div class="time-language">
+                <div id="current-time"></div>
+                <select id="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                </select>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="panchayats.html" class="active">Panchayats</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="back-section">
+                <button onclick="window.history.back()" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h2 id="panchayat-title">Citizen Information</h2>
+            <div class="section-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Population Data</h3>
+                        <div class="card-content">
+                            <p>Details about population statistics and demographics</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Education Level</h3>
+                        <div class="card-content">
+                            <p>Information about educational facilities and literacy rates</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Employment Opportunities</h3>
+                        <div class="card-content">
+                            <p>Details about job opportunities and employment programs</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Health Facilities</h3>
+                        <div class="card-content">
+                            <p>Information about healthcare services and facilities</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Agriculture and Animal Husbandry</h3>
+                        <div class="card-content">
+                            <p>Details about farming and livestock activities</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Industry and Commerce</h3>
+                        <div class="card-content">
+                            <p>Information about business and industrial development</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const panchayatName = urlParams.get('name');
+            if (panchayatName) {
+                document.getElementById('panchayat-title').textContent = `Citizen Information - ${decodeURIComponent(panchayatName)}`;
+                document.title = `Citizen Information - ${decodeURIComponent(panchayatName)} - Panchayati Raj Kharkhoda`;
+            }
+        });
+    </script>
+</body>
+</html>

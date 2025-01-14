@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panchayat Structure - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/basic-info.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo-placeholder.png" alt="Panchayati Raj Logo" id="logo-img">
+            </a>
+            <div class="header-text">
+                <h1 id="panchayat-title">Loading...</h1>
+                <p class="subheading" id="panchayat-subtitle">Panchayati Raj Kharkhoda</p>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="panchayats.html" class="active">Panchayats</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="info-container">
+            <!-- Elected Representatives Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-users-cog"></i> Elected Representatives</h3>
+                <div id="elected-reps">
+                    <p><strong>Sarpanch:</strong> <span id="sarpanch-name"></span></p>
+                    <p><strong>Up-Sarpanch:</strong> <span id="up-sarpanch-name"></span></p>
+                    <h4>Ward Members</h4>
+                    <ul id="panch-members"></ul>
+                </div>
+            </div>
+
+            <!-- Departments Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-sitemap"></i> Departments and Their Heads</h3>
+                <div id="department-list">
+                    <ul id="dept-heads"></ul>
+                </div>
+            </div>
+
+            <!-- Meeting Schedule Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-calendar-alt"></i> Meeting Schedule</h3>
+                <div id="meeting-schedule">
+                    <p><strong>Regular Meetings:</strong> <span id="regular-meetings"></span></p>
+                    <p><strong>Special Sessions:</strong> <span id="special-sessions"></span></p>
+                    <p><strong>Gram Sabha:</strong> <span id="gram-sabha"></span></p>
+                    <h4>Upcoming Meetings</h4>
+                    <ul id="upcoming-meetings"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Carousel -->
+        <div class="carousel">
+            <div id="carousel-content"></div>
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to load panchayat data
+        function loadPanchayatData() {
+            const panchayatId = getUrlParameter('id');
+            const panchayatName = decodeURIComponent(getUrlParameter('name') || '');
+            
+            if (!panchayatId) {
+                alert('Panchayat ID not specified');
+                return;
+            }
+
+            // Update page title and header
+            document.title = `${panchayatName} - Panchayat Structure`;
+            document.getElementById('panchayat-title').textContent = `${panchayatName} - Panchayat Structure`;
+            document.getElementById('panchayat-subtitle').textContent = `Panchayati Raj Kharkhoda`;
+
+            // Update elected representatives
+            document.getElementById('sarpanch-name').textContent = 'Mr. Ram Kumar';
+            document.getElementById('up-sarpanch-name').textContent = 'Mrs. Sita Devi';
+            
+            // Update panch members with enhanced list
+            const panchMembers = [
+                'Mr. Mohan Singh - Ward 1',
+                'Mrs. Geeta Kumari - Ward 2',
+                'Mr. Suresh Kumar - Ward 3',
+                'Mrs. Priya Sharma - Ward 4',
+                'Mr. Rajesh Verma - Ward 5'
+            ];
+            document.getElementById('panch-members').innerHTML = 
+                panchMembers.map(member => `<li>${member}</li>`).join('');
+
+            // Update department heads with enhanced list
+            const departments = [
+                { name: 'Revenue Department', head: 'Mr. Rajesh Kumar' },
+                { name: 'Development Department', head: 'Mrs. Anita Sharma' },
+                { name: 'Education Department', head: 'Mr. Vikram Singh' },
+                { name: 'Health Department', head: 'Dr. Meena Kumari' },
+                { name: 'Agriculture Department', head: 'Mr. Surinder Pal' }
+            ];
+            document.getElementById('dept-heads').innerHTML = departments.map(dept => 
+                `<li><strong>${dept.name}:</strong> ${dept.head}</li>`
+            ).join('');
+
+            // Update meeting schedule
+            document.getElementById('regular-meetings').textContent = 'Every Monday, 10:00 AM';
+            document.getElementById('special-sessions').textContent = 'As per requirement';
+            document.getElementById('gram-sabha').textContent = 'First Sunday of every month';
+
+            // Update upcoming meetings
+            const upcomingMeetings = [
+                'Budget Review - January 20, 2025',
+                'Development Project Discussion - January 25, 2025',
+                'Gram Sabha - February 4, 2025',
+                'Education Committee - February 10, 2025'
+            ];
+            document.getElementById('upcoming-meetings').innerHTML = 
+                upcomingMeetings.map(meeting => `<li>${meeting}</li>`).join('');
+
+            // Load carousel images
+            const carouselContent = document.getElementById('carousel-content');
+            carouselContent.innerHTML = `
+                <div class="carousel-item active">
+                    <img src="images/panchayats/structure1.jpg" alt="${panchayatName} Structure Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/panchayats/structure2.jpg" alt="${panchayatName} Structure Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/panchayats/structure3.jpg" alt="${panchayatName} Structure Image 3">
+                </div>
+            `;
+        }
+
+        // Initialize carousel
+        function initCarousel() {
+            const carousel = document.querySelector('.carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                items.forEach(item => item.style.display = 'none');
+                items[index].style.display = 'block';
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showSlide(currentIndex);
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Auto-advance slides
+            setInterval(nextSlide, 5000);
+
+            // Show first slide
+            showSlide(currentIndex);
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPanchayatData();
+            initCarousel();
+        });
+    </script>
+</body>
+</html>

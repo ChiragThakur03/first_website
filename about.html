@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/nav-animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo-placeholder.png" alt="Panchayati Raj Logo" id="logo-img">
+            </a>
+            <div class="header-text">
+                <h1>Panchayati Raj Kharkhoda</h1>
+                <p class="subheading">Panchayat Information Management System</p>
+                <p class="tagline">Strengthening Transparency, Governance, and Development
+              </p>
+            </div>
+            <div class="time-language">
+                <div id="current-time"></div>
+                <select id="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                </select>
+            </div>
+        </div>
+        <nav class="main-nav about-nav">
+            <ul>
+                <li><a href="index.html"><span>Home</span></a></li>
+                <li><a href="about.html" class="active"><span>About</span></a></li>
+                <li><a href="panchayats.html"><span>Panchayats</span></a></li>
+                <li><a href="gallery.html"><span>Gallery</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="about-container">
+        <!-- Head of Block Section -->
+        <section class="head-block-section glass-card">
+            <h2 class="section-title">Head of Block</h2>
+            <div class="profile-card">
+                <div class="image-wrapper">
+                    <img src="images/head.jpg" alt="Head of Block">
+                </div>
+                <div class="profile-info">
+                    <h3>Dr. Rajesh Kumar</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BDO's Section -->
+        <section class="bdo-section glass-card">
+            <h2>Block Development Officers</h2>
+            <div class="bdo-grid">
+                <div class="bdo-card">
+                    <div class="image-wrapper">
+                        <img src="images/bdo1.jpg" alt="Block Development Officer">
+                    </div>
+                    <div class="info">
+                        <h3>Mr. Rajesh Kumar</h3>
+                        <p class="designation">Block Development Officer</p>
+                        <p class="description">Experienced administrator with over 15 years of service in rural development and panchayati raj institutions.</p>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                            <p><i class="fas fa-envelope"></i> rajesh.kumar@gov.in</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bdo-card">
+                    <div class="image-wrapper">
+                        <img src="images/bdo2.jpg" alt="Block Development Officer">
+                    </div>
+                    <div class="info">
+                        <h3>Mrs. Priya Sharma</h3>
+                        <p class="designation">Block Development Officer</p>
+                        <p class="description">Dedicated officer with expertise in implementing government schemes and community development programs.</p>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> +91 98765 43211</p>
+                            <p><i class="fas fa-envelope"></i> priya.sharma@gov.in</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section glass-card">
+            <h2 class="section-title">Block Map</h2>
+            <div class="map-container">
+                <img src="images/map.jpg" alt="Block Map" class="map-image" onclick="openImagePreview(this.src)">
+            </div>
+        </section>
+
+        <!-- Staff Section -->
+        <section class="staff-section glass-card">
+            <h2 class="section-title">Staff</h2>
+            <div class="profile-card">
+                <div class="profile-img">
+                    <img src="images/staff.jpg" alt="Staff">
+                </div>
+                <div class="profile-info">
+                    <p>Our dedicated staff members work tirelessly to serve the community and implement various development programs.</p>
+                    <a href="staff.html" class="view-more"><h3>Click to view more details about the staff</h3> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Preview Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img id="modalImage" class="modal-content">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

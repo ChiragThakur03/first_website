@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Information - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/basic-info.css">
+    <link rel="stylesheet" href="css/nav-animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo-placeholder.png" alt="Panchayati Raj Logo" id="logo-img">
+            </a>
+            <div class="header-text">
+                <h1 id="panchayat-title">Loading...</h1>
+                <p class="subheading" id="panchayat-subtitle">Panchayati Raj Kharkhoda</p>
+            </div>
+        </div>
+        <nav class="main-nav basic-info-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="panchayats.html">Panchayats</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="info-container">
+            <!-- Basic Details Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-building"></i> Basic Details</h3>
+                <p><strong>Panchayat Name:</strong> <span id="panchayat-name"></span></p>
+                <p><strong><i class="fas fa-calendar"></i> Year of Establishment:</strong> <span id="establishment-year"></span></p>
+            </div>
+
+            <!-- Geographic Information Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-map"></i> Geographic Information</h3>
+                <p><strong>Area:</strong> <span id="total-area"></span></p>
+                <p><strong>Terrain:</strong> <span id="terrain-type"></span></p>
+            </div>
+
+            <!-- Population Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-users"></i> Population Details</h3>
+                <p><strong>Total Population:</strong> <span id="total-population"></span></p>
+                <p><strong>Demographics:</strong> <span id="demographics"></span></p>
+            </div>
+
+            <!-- Administrative Units Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-home"></i> Administrative Units</h3>
+                <p><strong>Number of Villages:</strong> <span id="villages-count"></span></p>
+                <p><strong>Number of Wards:</strong> <span id="wards-count"></span></p>
+            </div>
+
+            <!-- Contact Information Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-address-card"></i> Contact Information</h3>
+                <p><strong>Address:</strong> <span id="address"></span></p>
+                <p><strong><i class="fas fa-phone"></i> Phone:</strong> <span id="phone"></span></p>
+                <p><strong><i class="fas fa-envelope"></i> Email:</strong> <span id="email"></span></p>
+            </div>
+
+            <!-- Social Media Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-share-alt"></i> Social Media</h3>
+                <div id="social-media-links" class="social-media-links"></div>
+            </div>
+        </div>
+
+        <!-- Image Carousel -->
+        <div class="carousel">
+            <div id="carousel-content"></div>
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <script src="panchayat-details.js"></script>
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to load panchayat data
+        function loadPanchayatData() {
+            const panchayatId = getUrlParameter('id');
+            const panchayatName = decodeURIComponent(getUrlParameter('name') || '');
+            
+            if (!panchayatId) {
+                alert('Panchayat ID not specified');
+                return;
+            }
+
+            // Update page title and header
+            document.title = `${panchayatName} - Basic Information`;
+            document.getElementById('panchayat-title').textContent = `${panchayatName} - Basic Information`;
+            document.getElementById('panchayat-subtitle').textContent = `Panchayati Raj Kharkhoda`;
+
+            // Update all data fields with dynamic data
+            document.getElementById('panchayat-name').textContent = panchayatName;
+            document.getElementById('establishment-year').textContent = '1965-1975';
+            document.getElementById('total-area').textContent = 'Approx. 150-200 hectares';
+            document.getElementById('terrain-type').textContent = 'Agricultural plains with mixed vegetation';
+            document.getElementById('total-population').textContent = '10,000-20,000';
+            document.getElementById('demographics').textContent = 'Rural agricultural community';
+            document.getElementById('villages-count').textContent = '2-4';
+            document.getElementById('wards-count').textContent = '5-10';
+            document.getElementById('address').textContent = `Gram Panchayat Office, ${panchayatName}, Kharkhoda`;
+            document.getElementById('phone').textContent = '+91-XXXXXXXXXX';
+            document.getElementById('email').textContent = `${panchayatName.toLowerCase().replace(/\s+/g, '')}.panchayat@gov.in`;
+
+            // Update social media links
+            const socialHtml = `
+                <p><i class="fab fa-facebook"></i> <a href="#" target="_blank">Facebook</a></p>
+                <p><i class="fab fa-twitter"></i> <a href="#" target="_blank">Twitter</a></p>
+            `;
+            document.getElementById('social-media-links').innerHTML = socialHtml;
+
+            // Load carousel images
+            const carouselContent = document.getElementById('carousel-content');
+            carouselContent.innerHTML = `
+                <div class="carousel-item active">
+                    <img src="images/panchayats/default1.jpg" alt="${panchayatName} Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/panchayats/default2.jpg" alt="${panchayatName} Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/panchayats/default3.jpg" alt="${panchayatName} Image 3">
+                </div>
+            `;
+        }
+
+        // Initialize carousel
+        function initCarousel() {
+            const carousel = document.querySelector('.carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                items.forEach(item => item.style.display = 'none');
+                items[index].style.display = 'block';
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showSlide(currentIndex);
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Auto-advance slides
+            setInterval(nextSlide, 5000);
+
+            // Show first slide
+            showSlide(currentIndex);
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPanchayatData();
+            initCarousel();
+        });
+    </script>
+</body>
+</html>

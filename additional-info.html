@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Information - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/nav-animations.css">
+    <link rel="stylesheet" href="panchayat-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <img src="logo-placeholder.png" alt="Panchayati Raj Logo" id="logo-img">
+            </a>
+            <div class="header-text">
+                <h1>Panchayati Raj Kharkhoda</h1>
+                <p class="subheading">Panchayat Information Management System</p>
+                <p class="tagline">Strengthening Transparency, Governance, and Development</p>
+            </div>
+            <div class="time-language">
+                <div id="current-time"></div>
+                <select id="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                </select>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="panchayats.html" class="active">Panchayats</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="back-section">
+                <button onclick="window.history.back()" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            <h2 id="panchayat-title">Additional Information</h2>
+            <div class="section-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Gram Sabha Meeting Minutes</h3>
+                        <div class="card-content">
+                            <p>Records of meetings and important discussions</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Important Decisions Taken by Panchayat</h3>
+                        <div class="card-content">
+                            <p>Key decisions and their implementation status</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Panchayat Policies and Regulations</h3>
+                        <div class="card-content">
+                            <p>Current policies and regulatory framework</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Services Provided by Panchayat</h3>
+                        <div class="card-content">
+                            <p>List of available services and how to access them</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Frequently Asked Questions (FAQs)</h3>
+                        <div class="card-content">
+                            <p>Common questions and their answers</p>
+                            <div class="admin-editable">Content managed by admin</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const panchayatName = urlParams.get('name');
+            if (panchayatName) {
+                document.getElementById('panchayat-title').textContent = `Additional Information - ${decodeURIComponent(panchayatName)}`;
+                document.title = `Additional Information - ${decodeURIComponent(panchayatName)} - Panchayati Raj Kharkhoda`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panchayat Details - Panchayati Raj Kharkhoda</title>
+    <link rel="stylesheet" href="panchayats.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-text">
+            <h1 id="panchayatName">[Panchayat Name]</h1>
+            <p class="subheading">Detailed Information</p>
+        </div>
+    </header>
+
+    <!-- Information Cards Grid -->
+    <div class="info-cards-section">
+        <div class="info-cards-grid">
+            <!-- Basic Information -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/basic-info.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-info-circle card-icon"></i>
+                    <h3>Basic Information</h3>
+                    <ul class="info-preview">
+                        <li>Panchayat Details</li>
+                        <li>Geographic Area</li>
+                        <li>Population & Demographics</li>
+                        <li>Contact Information</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Panchayat Structure -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/structure.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-sitemap card-icon"></i>
+                    <h3>Panchayat Structure</h3>
+                    <ul class="info-preview">
+                        <li>Elected Representatives</li>
+                        <li>Department Heads</li>
+                        <li>Meeting Schedule</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Plans and Projects -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/plans.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-project-diagram card-icon"></i>
+                    <h3>Plans and Projects</h3>
+                    <ul class="info-preview">
+                        <li>Ongoing Projects</li>
+                        <li>Completed Projects</li>
+                        <li>Government Schemes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Budget -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/budget.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-money-bill-wave card-icon"></i>
+                    <h3>Budget</h3>
+                    <ul class="info-preview">
+                        <li>Annual Budget</li>
+                        <li>Income Sources</li>
+                        <li>Expense Breakdown</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Resources -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/resources.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-warehouse card-icon"></i>
+                    <h3>Resources</h3>
+                    <ul class="info-preview">
+                        <li>Physical Resources</li>
+                        <li>Human Resources</li>
+                        <li>Financial Resources</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/achievements.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-trophy card-icon"></i>
+                    <h3>Achievements</h3>
+                    <ul class="info-preview">
+                        <li>Development Progress</li>
+                        <li>Problem Solving</li>
+                        <li>Transparency</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenges -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/challenges.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-exclamation-triangle card-icon"></i>
+                    <h3>Challenges</h3>
+                    <ul class="info-preview">
+                        <li>Development Barriers</li>
+                        <li>Citizen Complaints</li>
+                        <li>Resource Shortages</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Citizen Information -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/citizen-info.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-users card-icon"></i>
+                    <h3>Citizen Information</h3>
+                    <ul class="info-preview">
+                        <li>Demographics</li>
+                        <li>Education & Employment</li>
+                        <li>Health & Agriculture</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="info-card" onclick="window.location.href='panchayat-pages/additional-info.html'">
+                <div class="info-card-content">
+                    <i class="fas fa-plus-circle card-icon"></i>
+                    <h3>Additional Information</h3>
+                    <ul class="info-preview">
+                        <li>Meeting Minutes</li>
+                        <li>Policies & Regulations</li>
+                        <li>FAQs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button">
+        <a href="panchayats.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Panchayats
+        </a>
+    </div>
+
+    <script>
+        // Get panchayat name from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const panchayatName = urlParams.get('name') || '[Panchayat Name]';
+        document.getElementById('panchayatName').textContent = panchayatName;
+
+        // Update all detail page links to include panchayat name
+        document.querySelectorAll('.info-card').forEach(card => {
+            const currentHref = card.getAttribute('onclick').match(/'([^']+)'/)[1];
+            card.setAttribute('onclick', `window.location.href='${currentHref}?name=${encodeURIComponent(panchayatName)}'`);
+        });
+    </script>
+
+    <script src="data/panchayat_data.js"></script>
+    <script>
+        // Function to update content when data changes
+        function updatePanchayatContent(panchayatId) {
+            // Get the data for this panchayat
+            const data = getPanchayatData(panchayatId);
+            if (!data) return;
+
+            // Update each section with stored data
+            Object.keys(data).forEach(section => {
+                const sectionData = data[section];
+                const sectionElement = document.getElementById(section);
+                if (!sectionElement) return;
+
+                // Update text content
+                Object.keys(sectionData).forEach(field => {
+                    if (field === 'images') return; // Handle images separately
+                    const element = sectionElement.querySelector(`[data-field="${field}"]`);
+                    if (element) {
+                        element.textContent = sectionData[field];
+                    }
+                });
+
+                // Update images if present
+                if (sectionData.images && sectionData.images.length > 0) {
+                    const carousel = sectionElement.querySelector('.image-carousel');
+                    if (carousel) {
+                        carousel.innerHTML = sectionData.images
+                            .map(src => `<div class="carousel-item"><img src="${src}" alt="Panchayat Image"></div>`)
+                            .join('');
+                    }
+                }
+            });
+        }
+
+        // Listen for data updates
+        window.addEventListener('panchayatDataUpdated', function(event) {
+            const { panchayatId, section, data } = event.detail;
+            updatePanchayatContent(panchayatId);
+        });
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const panchayatId = urlParams.get('id');
+            if (panchayatId) {
+                updatePanchayatContent(panchayatId);
+            }
+        });
+    </script>
+</body>
+</html>
